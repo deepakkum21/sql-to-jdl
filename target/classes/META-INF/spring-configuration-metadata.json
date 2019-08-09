@@ -1,0 +1,39 @@
+{
+  "groups": [
+    {
+      "name": "application",
+      "type": "org.blackdread.sqltojava.config.ApplicationProperties",
+      "sourceType": "org.blackdread.sqltojava.config.ApplicationProperties"
+    },
+    {
+      "name": "application.export",
+      "type": "org.blackdread.sqltojava.config.ApplicationProperties$Export",
+      "sourceType": "org.blackdread.sqltojava.config.ApplicationProperties",
+      "sourceMethod": "getExport()"
+    }
+  ],
+  "properties": [
+    {
+      "name": "application.database-to-export",
+      "type": "java.lang.String",
+      "description": "Database name to export to JDL",
+      "sourceType": "org.blackdread.sqltojava.config.ApplicationProperties"
+    },
+    {
+      "name": "application.export.path",
+      "type": "java.nio.file.Path",
+      "sourceType": "org.blackdread.sqltojava.config.ApplicationProperties$Export"
+    },
+    {
+      "name": "application.export.type",
+      "type": "java.lang.String",
+      "sourceType": "org.blackdread.sqltojava.config.ApplicationProperties$Export"
+    },
+    {
+      "name": "application.ignored-table-names",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "org.blackdread.sqltojava.config.ApplicationProperties"
+    }
+  ],
+  "hints": []
+}

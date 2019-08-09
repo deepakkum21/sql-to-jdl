@@ -1,0 +1,35 @@
+spring:
+    datasource:
+            type: com.zaxxer.hikari.HikariDataSource
+            url: jdbc:mysql://10.4.69.25:3306/?useUnicode=true&characterEncoding=utf8&useSSL=false
+            username: root
+            password: root@123Root
+            hikari:
+                data-source-properties:
+                    cachePrepStmts: true
+                    prepStmtCacheSize: 250
+                    prepStmtCacheSqlLimit: 2048
+                    useServerPrepStmts: true
+    jooq:
+        sql-dialect: mysql
+
+
+application:
+    database-to-export: deepakdb
+    ignored-table-names:
+        - databasechangelog
+        - databasechangeloglock
+        - QRTZ_BLOB_TRIGGERS
+        - QRTZ_CALENDARS
+        - QRTZ_CRON_TRIGGERS
+        - QRTZ_FIRED_TRIGGERS
+        - QRTZ_JOB_DETAILS
+        - QRTZ_LOCKS
+        - QRTZ_PAUSED_TRIGGER_GRPS
+        - QRTZ_SCHEDULER_STATE
+        - QRTZ_SIMPLE_TRIGGERS
+        - QRTZ_SIMPROP_TRIGGERS
+        - QRTZ_TRIGGERS
+    export:
+        path: ./my-project-jdl.jh
+        type: jdl
