@@ -79,7 +79,14 @@ public class SqlService {
 
     @Cacheable("SqlService.getTableOfForeignKey")
     public SqlTable getTableOfForeignKey(final SqlColumn column) {
-        log.debug("getTableOfForeignKey called: ({}) ({})", column.getTable().getName(), column.getName());
+        log.info("getTableOfForeignKey called: ({}) ({})", column.getTable().getName(), column.getName());
+        for (TableRelationInformation var : informationSchemaService.getAllTableRelationInformation()) {
+            log.info(var.getTableName());
+        log.info(var.getColumnName());
+        log.info(var.getReferencedTableName());
+        log.info(var.getReferencedColumnName());
+        }
+        
         return informationSchemaService.getAllTableRelationInformation().stream()
             .filter(e -> e.getTableName().equals(column.getTable().getName()))
             .filter(e -> e.getColumnName().equals(column.getName()))

@@ -90,6 +90,8 @@ public class InformationSchemaRepository {
     }
 
     private TableRelationInformation map(final Record4<String, String, byte[], byte[]> r) {
-        return new TableRelationInformation(r.value1(), r.value2(), r.value3().toString(), r.value4().toString());
+        String s2=new String(r.value4());
+        String s1=new String(r.value3());
+        return new TableRelationInformation(r.value1(), r.value2(), s1, s2);
     }
 }

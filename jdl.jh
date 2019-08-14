@@ -1,0 +1,77 @@
+entity CompanyMaster {
+	companyMasterSid Integer required,
+	companyId String required maxlength(50),
+	companyNo String required maxlength(50),
+	companyName String required maxlength(100),
+	companyStartDate Instant required,
+	companyEndDate Instant,
+	lives Integer,
+	financialSystem String maxlength(50),
+	address1 String maxlength(100),
+	address2 String maxlength(100),
+	city String maxlength(50),
+	zipCode String maxlength(50),
+	regionCode String maxlength(50),
+	lastUpdatedDate Instant,
+	internalNotes String maxlength(4000),
+	inboundStatus String required maxlength(1),
+	recordLockStatus Boolean required,
+	batchId String maxlength(50),
+	source String maxlength(50),
+	createdBy Integer required,
+	createdDate Instant required,
+	modifiedBy Integer required,
+	modifiedDate Instant required
+}
+
+entity HelperTable {
+	helperTableSid Integer required,
+	description String maxlength(100),
+	listName String maxlength(50),
+	refCount BigDecimal,
+	createdBy Integer required,
+	createdDate Instant required,
+	modifiedBy Integer required,
+	modifiedDate Instant required,
+	aliasName String maxlength(1000)
+}
+
+
+
+// Relations
+relationship ManyToOne {
+	CompanyMaster{companyType required} to HelperTable{companyMaster}
+}
+
+relationship ManyToOne {
+	CompanyMaster{companyStatus required} to HelperTable{companyMaster}
+}
+
+relationship ManyToOne {
+	CompanyMaster{companyCategory} to HelperTable{companyMaster}
+}
+
+relationship ManyToOne {
+	CompanyMaster{companyGroup} to HelperTable{companyMaster}
+}
+
+relationship ManyToOne {
+	CompanyMaster{organizationKey} to HelperTable{companyMaster}
+}
+
+relationship ManyToOne {
+	CompanyMaster{state} to HelperTable{companyMaster}
+}
+
+relationship ManyToOne {
+	CompanyMaster{country} to HelperTable{companyMaster}
+}
+
+
+
+// Options
+service * with serviceClass
+paginate * with pagination
+dto * with mapstruct
+filter *
+
